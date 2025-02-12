@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <a href="/nuevo">Agregar Producto</a>
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td>
+                    <img th:src="${producto.imagen}" alt="Imagen del Producto" style="width:100px; height:100px;">
+                </td>
+                <td>
+                    <a th:href="@{/detalle/{id}(id=${producto.id})}">Ver detalles</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
